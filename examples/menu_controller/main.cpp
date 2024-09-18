@@ -60,6 +60,12 @@ class MenuController final : public HookInjection {
     return false;
   }
 
+  void OnUpdate() override {
+    if (Fuse::Get().IsInGame()) {
+      attempted_join = false;
+    } 
+  }
+
  private:
   bool ShouldJoin() const { return !attempted_join && profile_index != kInvalidIndex && zone_index != kInvalidIndex; }
 
@@ -101,6 +107,8 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD dwReason, LPVOID reserved) {
         }
 
         Fuse::Get().RegisterHook(std::make_unique<MenuController>(profile_index, zone_index));
+      } else {
+        //Fuse::Get().RegisterHook(std::make_unique<MenuController>());
       }
     } break;
   }

@@ -78,6 +78,8 @@ class Fuse {
 
   // This returns true if the client is on the menu and isn't attempting to connect to a zone.
   FUSE_EXPORT bool IsOnMenu() const;
+  // Returns true if in game and map isnt downloading
+  FUSE_EXPORT bool IsInGame() const;
   FUSE_EXPORT ConnectState GetConnectState() const;
 
   FUSE_EXPORT bool IsGameMenuOpen() const;

@@ -340,6 +340,15 @@ bool Fuse::IsOnMenu() const {
   return *(u8*)(game_memory.module_base_menu + 0x47a84) == 0;
 }
 
+bool Fuse::IsInGame() const {
+
+  if (Fuse::Get().map.IsLoaded() && Fuse::Get().GetConnectState() == ConnectState::Playing) {
+    return true;
+  }
+
+    return false;
+}
+
 ConnectState Fuse::GetConnectState() const {
   if (IsOnMenu()) return ConnectState::None;
 

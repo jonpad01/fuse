@@ -8,6 +8,9 @@
 namespace fuse {
 
 struct KeyState {
+
+  //KeyState() : forced(false), pressed(false) {}
+
   bool forced;
   bool pressed;
 };
